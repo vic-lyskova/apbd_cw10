@@ -23,7 +23,7 @@ public class PatientsController : ControllerBase
             return NotFound($"Patient with id {idPatient} not found");
         }
 
-        var patients = await _dbService.GetPatients(idPatient);
+        var patients = await _dbService.GetPatientsInfo(idPatient);
 
         return Ok(patients.Select(p => new GetPatientInfoDTO()
         {
@@ -51,8 +51,9 @@ public class PatientsController : ControllerBase
                         FirstName = pr.Doctor.FirstName
                     }
                 })
-                .OrderBy(pr => pr.DueDate)
+                // .OrderBy(pr => pr.DueDate)
                 .ToList()
+            
         }));
     }
 }

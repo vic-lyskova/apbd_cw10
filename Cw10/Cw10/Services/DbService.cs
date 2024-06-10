@@ -20,12 +20,11 @@ public class DbService : IDbService
             .AnyAsync(e => e.IdPatient == idPatient);
     }
 
-    public async Task<ICollection<Patient>> GetPatients(int idPatient)
+    public async Task<ICollection<Patient>> GetPatientsInfo(int idPatient)
     {
         return await _context.Patients
             .Include(e => e.Prescriptions)
             .ThenInclude(e => e.PrescriptionMedicaments)
-            .ThenInclude(e => e.Medicament)
             .Where(e => e.IdPatient == idPatient)
             .ToListAsync();
     }
