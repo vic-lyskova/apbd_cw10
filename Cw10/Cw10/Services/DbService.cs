@@ -70,7 +70,7 @@ public class DbService : IDbService
             await _context.PrescriptionMedicaments.AddAsync(new PrescriptionMedicament()
             {
                 IdMedicament = medicament.IdMedicament,
-                IdPrescription = prescriptionToAdd.IdPrescription,
+                Prescription = prescriptionToAdd,
                 Dose = medicament.Dose,
                 Details = medicament.Description
             });

@@ -42,7 +42,7 @@ public class PrescriptionsController : ControllerBase
             return BadRequest("Can't add more than 10 medicaments to the prescription");
         }
 
-        if (addPrescriptionDto.Date < addPrescriptionDto.DueDate)
+        if (addPrescriptionDto.Date > addPrescriptionDto.DueDate)
         {
             return BadRequest("Prescription ends before prescribing");
         }
