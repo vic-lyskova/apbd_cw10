@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cw10.Migrations
 {
     [DbContext(typeof(ApbdContext))]
-    [Migration("20240608172139_Init")]
-    partial class Init
+    [Migration("20240610160215_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,7 +50,7 @@ namespace Cw10.Migrations
 
                     b.HasKey("IdDoctor");
 
-                    b.ToTable("Doctor", (string)null);
+                    b.ToTable("Doctor");
 
                     b.HasData(
                         new
@@ -101,7 +101,7 @@ namespace Cw10.Migrations
 
                     b.HasKey("IdMedicament");
 
-                    b.ToTable("Medicament", (string)null);
+                    b.ToTable("Medicament");
 
                     b.HasData(
                         new
@@ -150,7 +150,7 @@ namespace Cw10.Migrations
 
                     b.HasKey("IdPatient");
 
-                    b.ToTable("Patient", (string)null);
+                    b.ToTable("Patient");
 
                     b.HasData(
                         new
@@ -202,7 +202,7 @@ namespace Cw10.Migrations
 
                     b.HasIndex("IdPatient");
 
-                    b.ToTable("Prescription", (string)null);
+                    b.ToTable("Prescription");
 
                     b.HasData(
                         new
@@ -241,7 +241,8 @@ namespace Cw10.Migrations
 
                     b.Property<string>("Details")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int?>("Dose")
                         .HasColumnType("int");
@@ -250,7 +251,7 @@ namespace Cw10.Migrations
 
                     b.HasIndex("IdPrescription");
 
-                    b.ToTable("Prescription_Medicament", (string)null);
+                    b.ToTable("Prescription_Medicament");
 
                     b.HasData(
                         new
